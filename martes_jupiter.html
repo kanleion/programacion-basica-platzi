@@ -17,19 +17,20 @@
         var g_tierra = 9.8;
         var g_marte = 3.7;
         var g_jupiter = 24.8;
-
+        var nombre;
         var peso_final;
         if (planeta == 1) {
             peso_final = peso * g_marte / g_tierra;
-            document.write("tu peso en marte es <strong>" + peso_final + " kilos </strong>");
+            nombre = "Marte";
         } else if (planeta == 2) {
             peso_final = peso * g_jupiter / g_tierra;
-            document.write("tu peso en jupiter es <strong>" + peso_final + " kilos </strong>");
+            nombre = "Jupiter";
         } else {
             peso_final = 1000000;
-            document.write("tu peso en kripton es <strong>" + peso_final + " kilos </strong>");
+            nombre = "Kripton";
         }
         peso_final = parseInt(peso_final);
+        document.write("tu peso en " + nombre + " es <strong>" + peso_final + " kilos </strong>");
     </script>
 </body>
 
