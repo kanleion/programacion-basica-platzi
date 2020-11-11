@@ -1,3 +1,4 @@
+//prueba de algo
 var teclas = {
     //Las constantes se colocan en mayusculas, este pedazo es una nueva línea de codigo
     UP: 38,
