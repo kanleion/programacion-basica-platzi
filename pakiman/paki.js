@@ -12,7 +12,7 @@ coleccion.push(new Pakiman("Tocinauro", 80, 50));
 
 //For especial forin, va operar pro cada variable dentro de colección
 
-for (var p in coleccion[0]) {
+for (var p in coleccion[0] g) {
 
     console.log(p);
 }
