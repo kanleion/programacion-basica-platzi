@@ -1,7 +1,8 @@
 var vp = document.getElementById("villaplatzi");
 var papel = vp.getContext("2d");
 var mapa = "tile.webp";
-
+var xcerdo = 100;
+var ycerdo = 100;
 var vaca = {
     url: "vaca.webp",
     cargaOk: false
@@ -22,8 +23,15 @@ var pollo = {
     cargaOk: false
 };
 
+var teclas = {
+    //Las constantes se colocan en mayusculas, este pedazo es una nueva línea de codigo
+    UP: 38,
+    DOWN: 40,
+    LEFT: 37,
+    RIGHT: 39
+};
 var cantidad = aleatorio(5, 25);
-
+document.addEventListener("keydown", dibujarTeclado);
 //crear objeto, cuando ustedes tienen la definición de un objeto, se les llaman clases y 
 //cada una de estas cosas es un objeto o una instancia de un objeto y el nombre se le coloca mayúsculas
 fondo.imagen = new Image();
@@ -92,6 +100,7 @@ function dibujar() {
     }
     //dibujo de los cerdos
     if (cerdo.cargaOk) {
+        /* Este es el codigo que ejecuta un monton de cerdos
         var cantidadCerdo = aleatorio(2, 9);
         console.log("El número de cerdos es: " + cantidadCerdo);
         for (var v = 0; v < cantidadCerdo; v++) {
@@ -102,6 +111,8 @@ function dibujar() {
             papel.drawImage(cerdo.imagen, x, y);
 
         }
+        */
+        papel.drawImage(cerdo.imagen, x, y);
     }
     //dibujo de los pollos
     if (pollo.cargaOk) {
@@ -122,9 +133,6 @@ function dibujarVacas() {
     papel.drawImage(vaca, 10, 10);
 }
 
-function dibujarCerdos() {
-    papel.drawImage(cerdo, 10, 300);
-}
 
 function dibujarPollos() {
     papel.drawImage(pollo, 300, 150);
@@ -134,4 +142,30 @@ function aleatorio(min, maxi) {
     var resultado;
     resultado = Math.floor(Math.random() * (maxi - min + 1)) + min;
     return resultado;
+}
+//Funciones para mover el cerdo
+function dibujarCerdos(xincial, yinicial, xfinal, yfinal, lienzo) {
+    lienzo.beginPath();
+    lienzo.moveTo(xincial, yinicial); //Iniciamos en el punto 100,100
+    lienzo.lineTo(xfinal, yfinal); //Teminamos de dibujar en el punto 200,200
+    lienzo.closePath(); //dejamos de dibujar
+    papel.drawImage(cerdo.imagen, xincial, yinicial);
+
+}
+
+function dibujarTeclado(evento) {
+    console.log(evento);
+    var movimiento = 1;
+    switch (evento.keyCode) {
+
+        case teclas.UP:
+
+            dibujarCerdos(x, y, x, y - movimiento, papel);
+            y = y - movimiento;
+            break;
+
+        default:
+            console.log("otra tecla");
+            break;
+    }
 }
