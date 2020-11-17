@@ -4,29 +4,23 @@ imagenes["Cauchin"] = "vaca.webp";
 imagenes["Pokacho"] = "pollo.webp";
 imagenes["Tocinauro"] = "cerdo.webp";
 
-class Pakiman {
-    constructor(n, v, a) {
-            this.image = new Image();
-            this.nombre = n;
-            this.vida = v;
-            this.ataque = a;
+var coleccion = [];
 
-            this.image.src = imagenes[this.nombre];
+coleccion.push(new Pakiman("Cauchin", 100, 30));
+coleccion.push(new Pakiman("Pokacho", 80, 50));
+coleccion.push(new Pakiman("Tocinauro", 80, 50));
 
-        }
-        //En una clase no es necesario escribir function
-    hablar() {
-        alert(this.nombre);
-    }
+//For especial forin, va operar pro cada variable dentro de colección
 
-    mostrar() {
-        //agregar un hijo al DOM
-        document.body.appendChild(this.image);
-    }
+for (var p in coleccion[0]) {
+
+    console.log(p);
 }
 
-var cauchin = new Pakiman("Cauchin", 100, 30);
-var pokacho = new Pakiman("Pokacho", 80, 50);
-var tocinauro = new Pakiman("Tocinauro", 80, 50);
+//for of, si colocan of, muestra la instancia en vez del indice
+//si quieres el objeto usa of y si quieres el indice in
+for (var p of coleccion) {
 
-pokacho.mostrar();
+    console.log(p);
+    p.mostrar();
+}
